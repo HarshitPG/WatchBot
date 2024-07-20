@@ -7,6 +7,7 @@ import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.sharding.DefaultShardManagerBuilder;
 import net.dv8tion.jda.api.sharding.ShardManager;
+import spark.Spark;
 
 import javax.security.auth.login.LoginException;
 
@@ -23,6 +24,10 @@ public class WatchBot {
         shardManager = builder.build();
         String perspectiveApiKey = config.get("PERSPECTIVE_API_KEY");
         shardManager.addEventListener(new EventListener(perspectiveApiKey));
+        Spark.port(8080); // Default port for Replit
+        Spark.get("/bot", (req, res) -> "Bot is running");
+
+        System.out.println("Server is running on http://localhost:8080/health");
 
     }
 
