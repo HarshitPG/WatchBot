@@ -24,7 +24,7 @@ public class WatchBot {
         shardManager = builder.build();
         String perspectiveApiKey = config.get("PERSPECTIVE_API_KEY");
         shardManager.addEventListener(new EventListener(perspectiveApiKey));
-        Spark.port(8080); // Default port for Replit
+        Spark.port(8080); 
         Spark.get("/bot", (req, res) -> "Bot is running");
 
         System.out.println("Server is running on http://localhost:8080/health");
